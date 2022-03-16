@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "quiz#explanation"
+  
   get "quiz/friend_list"  => "quiz#friend_list"
   get "quiz/edit"  => "quiz#edit"
   get "quiz/quiz" => "quiz#quiz"
