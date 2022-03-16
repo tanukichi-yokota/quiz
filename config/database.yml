@@ -52,5 +52,6 @@ test:
 production:
   <<: *default
   database: quiz_production
-  username: quiz
-  password: <%= ENV['QUIZ_DATABASE_PASSWORD'] %>
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock
