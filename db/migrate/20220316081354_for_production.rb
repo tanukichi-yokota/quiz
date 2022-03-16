@@ -1,6 +1,6 @@
 class ForProduction < ActiveRecord::Migration[6.0]
   def change
-    create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
       t.string "name", null: false
       t.string "record_type", null: false
       t.bigint "record_id", null: false
@@ -10,7 +10,7 @@ class ForProduction < ActiveRecord::Migration[6.0]
       t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
     end
 
-    create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
       t.string "key", null: false
       t.string "filename", null: false
       t.string "content_type"
@@ -21,7 +21,7 @@ class ForProduction < ActiveRecord::Migration[6.0]
       t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
     end
 
-    create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
       t.bigint "friend_id"
       t.bigint "content_id"
       t.integer "result", limit: 1
@@ -31,7 +31,7 @@ class ForProduction < ActiveRecord::Migration[6.0]
       t.index ["id"], name: "result_id", unique: true
     end
 
-    create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
       t.bigint "friend_id"
       t.string "intro"
       t.string "question"
@@ -46,7 +46,7 @@ class ForProduction < ActiveRecord::Migration[6.0]
       t.text "created_at"
     end
 
-    create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
       t.string "full_name"
       t.string "last_name"
       t.string "first_name"
