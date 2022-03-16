@@ -1,0 +1,21 @@
+<%= render partial: 'header'%>
+<div class="ranking-wrapper">
+    <table class="ranking-table">
+        <tr>
+            <td class="ranking ranking-1">第1位<td>
+            <td class="names"><%= @ranking_array[0].values[0] %><td>
+            <td class="score"><%= @ranking_array[0].keys[0] %>点<td>
+        <tr>
+        <tr>
+            <td class="ranking ranking-2">第2位<td>
+            <td class="names"><%= @ranking_array[1].values[0] %><td>
+            <td class="score"><%= @ranking_array[1].keys[0] %>点<td>
+        <tr>
+        <tr>
+            <td class="ranking ranking-3">第3位<td>
+            <td class="names"><%= @ranking_array[2].values[0] %><td>
+            <td class="score"><%= @ranking_array[2].keys[0] %>点<td>
+        <tr>
+    </table>
+</div>
+<%= render partial: 'footer', locals: {params: "show_answer"}%>

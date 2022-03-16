@@ -1,0 +1,101 @@
+.quiz-wrapper {
+  width: 100%;
+  min-width: 780px;
+  height: 550px;
+  margin: 10px 0;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  background-color: black;
+  .upper-wrapper {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    .quiz-person-wrapper {
+      margin: 0 20px 20px 0;
+      padding: 10px 20px;
+      background-color: white;
+      width: 420px;
+      height: 280px;
+      border-radius: 10px;
+    }
+    .content-wrapper {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: white;
+      width: 100%;
+      height: 280px;
+      border-radius: 10px;
+      .content {
+        height: 180px;
+        margin-bottom: 25px;
+        position: relative;
+        line-height: 2em;
+        overflow-y: auto;
+        .content-innner-wrapper {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: block;
+          width: 95%;
+          height: 100%;
+          font-size: 16px;
+          .intro {
+          }
+          .question {
+            color: red;
+          }
+        }
+      }
+      .count-wrapper {
+        margin: 0 auto;
+        width: 180px;
+        height: 40px;
+        border: solid;
+        border-radius: 10px;
+        position: relative;
+        color: red;
+        span {
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 10px;
+          color: red;
+        }
+      }
+    }
+  }
+  .buttom-wrapper {
+    width: 100%;
+    height: 200px;
+  }
+  .option-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    border-collapse: separate;
+    border-spacing: 7px;
+    tr {
+      td {
+        border-radius: 10px;
+        background-color: white;
+        padding: 0px 20px;
+        font-size: 30px;
+        border: 4px solid black;
+        cursor: pointer;
+      }
+      .not-selected {
+        &:hover {
+          border: 4px solid orange;
+        }
+      }
+      .selected {
+        background-color: orange;
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+<%= render partial: 'header'%>
+<div class="quiz-wrapper">
+    <div class="upper-wrapper">
+        <div class="quiz-person-wrapper">
+            <%= render partial: 'friend_card', locals: {params: 'quiz'} %>
+        </div>
+        <div class="content-wrapper">
+            <p class="content">
+                <span class="content-innner-wrapper js-target-content-innner-wrapper u-hide">
+                    <span class="intro js-target-intro">
+                        <%= @content.intro %>
+                    </span>
+                    <span class="question">
+                        <%= @content.question %>
+                    </span>
+                </span>
+            </p>
+            <div class="count-wrapper js-target-count">
+                <span class="start">START</span>
+                <span class="count u-hide"></span>
+            </div>
+        </div>
+    </div>
+    <div class="buttom-wrapper">
+        <table class="option-wrapper">
+            <tr>
+                <td class="option_a not_selected">A: <%= @content.option_a %></td>
+                <td class="option_b not_selected">B: <%= @content.option_b %></td>
+            </tr>
+            <tr>
+                <td class="option_c not_selected">C: <%= @content.option_c %></td>
+                <td class="option_d not_selected">D: <%= @content.option_d %></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<%= render partial: 'footer', locals: {params: 'quiz'} %>
+<script>
+$(function(){
+    // 関数定義
+    let countDown = (num) => {
+        let timerId = setInterval(function(){
+            num--;
+            $('.count').text(`${num}`);
+            if (num == 0) {
+                $('.count').text('TIME UP!');
+                clearInterval(timerId); 
+                }
+        }, 1000, num);
+    }
+    let addBr = (str) => {
+        console.log(str.replace(/。/g, '。<br> ').replace(/！/g, '。<br> '))
+        return str = str.replace(/。/g, '。<br> ').replace(/！/g, '！<br> ')
+    }
+    let selectAnswer = (element, answer, href) => {
+        $('td').removeClass('selected');
+        $('td').addClass('not-selected');
+        element.removeClass('not-selected');
+        element.addClass('selected');
+        let add_text = `&answer=${answer}`;
+        if (!href.match(/&answer=/)) {
+            href += add_text;
+            $('.answer-link').attr("href", href);
+        }
+        $('.js-target-pre-select-answer').addClass('u-hide');
+        $('.js-target-answer-link').removeClass('u-hide');
+    }
+    // 変数定義
+    let start_count = 30;
+    let href = $('.answer-link').attr('href');
+    // カウント開始
+    $('.js-target-count').on('click', () => {
+        $('.start').addClass('u-hide');
+        $('.count').text(start_count);
+        $('.count').removeClass('u-hide');
+        countDown(start_count);
+    });
+    // イントロに改行挿入
+    let str = addBr($('.js-target-intro').text());
+    $('.js-target-intro').html(str);
+    $('.js-target-content-innner-wrapper').removeClass('u-hide');
+    // 回答を選択
+    $('.option_a').click(function() {selectAnswer($(this), "a", href);});
+    $('.option_b').click(function() {selectAnswer($(this), "b", href);});
+    $('.option_c').click(function() {selectAnswer($(this), "c", href);});
+    $('.option_d').click(function() {selectAnswer($(this), "d", href);});
+});
+</script>

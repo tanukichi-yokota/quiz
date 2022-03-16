@@ -1,0 +1,27 @@
+@import "reset";
+@import "header";
+@import "footer";
+@import "friend_card";
+@import "explanation";
+@import "friend_list";
+@import "edit";
+@import "quiz";
+@import "show_answer";
+@import "input_answer";
+@import "show_ranking";
+
+@keyframes fadein {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+body {
+  margin: 0 12%;
+  min-width: 500px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .u-hide {
+    display: none !important;
+  }
+}

@@ -1,0 +1,130 @@
+<%= render partial: 'header' %>
+<div class="all-wrapper">
+    <div class="side-wrapper">
+        <div class="random-wrapper">
+            <div class="random-text-wrapper">
+                <p class="quiz-number">次の問題は、、</p>
+                <p class="quiz-name js-target-quiz-name">???</p>
+                <p class="quiz-name u-hide js-target-quiz-name-final"></p>
+                <p class="keisyou">さん</p>
+            </div>
+            <div class="random-button-wrapper">
+                <div class="shuffle-button js-target-shuffle-button"><span>SHUFFLE</span></div>
+                <a class="name-link" href="">
+                    <div class="go-button"><span>GO</span></div>
+                </a>
+            </div>
+        </div>
+        <div class="ranking-link-wrapper">
+            <%= link_to quiz_show_ranking_path do %>
+                <span class="ranking-link">! 結果発表 !</span>
+            <% end %>
+        </div>
+        <div class="quiz-reset-wrapper">
+            <span class="reset-button">! 結果をリセット !</span>
+        </div>
+    </div>
+    <div class="list-wrapper">
+        <%= render partial: 'friend_card' %>
+    </div>
+</div>
+<script>
+$(function(){
+    // 関数定義
+    let fade = () => {
+        setInterval(function(){
+            $('.js-target-quiz-name').fadeOut(50,function(){$(this).fadeIn(500)});
+        }, 100);
+    }
+    let shuffle = (array) => {
+        let m = array.length, t, i;
+        while (m) {
+            i = Math.floor(Math.random() * m--);
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+        }
+        $('.js-target-quiz-name').text(array[0]);
+    }
+    let switch_name = (array) => {
+        setInterval(function(){
+            shuffle(array);
+        }, 500);
+    }
+    let ajax_get_name_array = () => {
+        // 未出題の名前配列を取得し、名前切り替え
+        $.ajax({
+            type: 'GET', 
+            url: '/quiz/ajax_get_name_array', 
+            dataType: 'json'
+        })
+        .done(function (res) {
+            fade();
+            direction.text('STOP');
+            $('.js-target-quiz-name-final').addClass('u-hide')
+            $('.js-target-quiz-name').removeClass('u-hide')
+            switch_name(res);
+        })
+        .fail(function() {
+            alert("通信エラーが発生しました"); 
+        })
+    }
+    let ajax_set_name_link = () => {
+        // GOのリンク先の変更
+        $.ajax({
+            type: 'GET', 
+            url: '/quiz/ajax_set_name_link', 
+            dataType: 'json'
+        })
+        .done(function (res) {
+            selected_name = res.full_name
+            console.log(selected_name);
+            $('.js-target-quiz-name-final').text(selected_name);
+            $('.js-target-quiz-name-final').removeClass('u-hide')
+            $('.js-target-quiz-name').addClass('u-hide')
+            $(".name-link").attr("href", `#${selected_name}`)
+        })
+        .fail(function() {
+            alert("通信エラーが発生しました"); 
+        })
+    }
+    let ajax_reset = () => {
+        // クイズ結果のリセット
+        $.ajax({
+            type: 'GET', 
+            url: '/quiz/ajax_reset', 
+            dataType: 'json'
+        })
+        .done(function (res) {
+
+            alert("リセットしました"); 
+        })
+        .fail(function() {
+            alert("通信エラーが発生しました"); 
+        })
+    }
+    // 変数定義
+    let names = '';
+    let direction = $('.js-target-shuffle-button').find('span');
+    let finalName = '';
+    // 実行
+    if ('<%= @no_answer %>') {alert('まだ回答がありません')}
+    $('.shuffle-button').on('click', () => {
+        if (direction.text() == 'SHUFFLE') {
+            // SHUFFLEをクリックで名前切り替え
+            ajax_get_name_array();
+        } else {
+            // STOPをクリックで名前設定、GOのリンク先を変更
+            direction.text('SHUFFLE');
+            ajax_set_name_link();
+        }
+    });
+    $('.reset-button').on('click', () => {
+        if (confirm('リセットしますか？')) {
+            ajax_reset();
+        } else {
+            return false
+        }
+    });
+});
+</script>

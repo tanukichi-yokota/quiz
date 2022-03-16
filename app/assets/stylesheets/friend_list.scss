@@ -1,0 +1,111 @@
+.all-wrapper {
+  display: flex;
+  .side-wrapper {
+    width: 230px;
+    min-width: 230px;
+    .random-wrapper {
+      margin-bottom: 30px;
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      background-color: black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      .random-text-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        p {
+          color: white;
+        }
+        .quiz-number {
+          font-size: 15px;
+        }
+        .quiz-name {
+          font-size: 30px;
+          text-align: center;
+        }
+        .keisyou {
+          font-size: 15px;
+          text-align: right;
+        }
+      }
+      .random-button-wrapper {
+        display: flex;
+        justify-content: space-between;
+        div {
+          cursor: pointer;
+          width: 72px;
+          height: 40px;
+          border: solid white;
+          border-radius: 10px;
+          position: relative;
+          span {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .ranking-link-wrapper {
+      margin-bottom: 30px;
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      background-color: black;
+      border-radius: 10px;
+      a {
+        text-decoration: none;
+        .ranking-link {
+          padding: 5px;
+          font-size: 20px;
+          display: block;
+          width: 100;
+          height: 40px;
+          margin: 60px auto;
+          text-align: center;
+          color: white;
+          cursor: pointer;
+          border: solid white;
+          border-radius: 10px;
+        }
+      }
+    }
+    .quiz-reset-wrapper {
+      margin-bottom: 30px;
+      padding: 20px;
+      width: 100%;
+      height: 200px;
+      background-color: gray;
+      border-radius: 10px;
+      .reset-button {
+        padding: 5px;
+        font-size: 20px;
+        display: block;
+        width: 100;
+        height: 40px;
+        margin: 60px auto;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        border: solid white;
+        border-radius: 10px;
+      }
+    }
+  }
+  .list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 30px;
+    width: calc(100% - 180px);
+    border-radius: 10px;
+    background-color: white;
+  }
+}

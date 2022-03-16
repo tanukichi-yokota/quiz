@@ -1,0 +1,42 @@
+.result-msg-wrapper {
+  margin: 0 auto;
+  width: 50%;
+  min-width: 400px;
+  height: 400px;
+  background-color: black;
+  position: relative;
+  border-radius: 10px;
+  .circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 10px solid;
+    border-color: red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadein 5s forwards;
+  }
+  .result {
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 70px;
+    animation: fadein 5s forwards;
+  }
+  .after-msg {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    color: white;
+    animation: fadein 6s forwards;
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,65 @@
+<div class="footer-wrapper">
+    <div class="button-wrapper">
+        <% if params == 'exp' %>
+            <div class="back-wrapper">
+                <span class="material-icons-outlined js-target-back">arrow_back</span>
+            </div>
+            <div class="forward-wrapper">
+                <%= link_to quiz_friend_list_path, class: "list-link-first" do %>   
+                    <span class="material-icons-outlined js-target-forward">arrow_forward</span>
+                <% end %>
+            </div>
+        <% elsif params == 'quiz' %>
+            <div class="forward-wrapper">
+                <%= link_to quiz_show_answer_path(id: @friends[0].id), class: "answer-link js-target-answer-link u-hide" do %> 
+                    <span class="answer-check">Answer Check</span>  
+                    <span class="material-icons-outlined js-target-forward">arrow_forward</span>
+                <% end %>
+                <span class="pre-select-answer js-target-pre-select-answer">Please Select Answer</span>
+            </div>
+        <% elsif params == 'show_answer' %>
+            <div class="forward-wrapper">
+                <%= link_to quiz_friend_list_path, class: "list-link-second js-target-list-link-socond" do %> 
+                    <span class="go-to-list">Go To List</span>  
+                    <span class="material-icons-outlined js-target-forward">arrow_forward</span>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<script>
+$(function(){
+    // 関数定義
+    let isShow = (selector) => {return !selector.hasClass('u-hide')};
+    // 変数定義
+    let greeting = $('.js-target-greeting');
+    let procedure = $('.js-target-procedure');
+    let start = $('.js-target-start');
+    // 実行 
+    $('.js-target-forward').on('click', () => {
+        if (isShow(greeting)) {
+            greeting.addClass('u-hide');
+            procedure.removeClass('u-hide');
+            return false
+        } else if (isShow(procedure)) {
+            procedure.addClass('u-hide');
+            start.removeClass('u-hide');
+            return false
+        } else if (isShow(start)) {
+            console.log("no more to go next")
+        }
+    });
+    $('.js-target-back').on('click', () => {
+        if (isShow(greeting)) {
+            console.log("no more to go back")
+        } else if (isShow(procedure)) {
+            procedure.addClass('u-hide');
+            greeting.removeClass('u-hide');
+        } else if (isShow(start)) {
+            start.addClass('u-hide');
+            procedure.removeClass('u-hide');
+        }
+    });
+});
+</script>

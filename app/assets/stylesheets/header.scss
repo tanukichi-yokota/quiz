@@ -1,0 +1,49 @@
+.header-wrapper {
+  margin-top: 10px;
+  height: 60px;
+  position: relative;
+  .logo-wrapper {
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    min-width: 200px;
+    padding: 14px 0;
+    vertical-align: top;
+    text-align: center;
+    span {
+      font-size: 22px;
+      font-weight: bold;
+      color: black;
+    }
+  }
+  .edit-button-wrapper {
+    display: inline-block;
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    left: 90%;
+    transform: translate(-50%, 0);
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
+    }
+  }
+  .friend-add-button-wrapper {
+    display: inline-block;
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    left: 95%;
+    transform: translate(-50%, 0);
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
+    }
+  }
+}

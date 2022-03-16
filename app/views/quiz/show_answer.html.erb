@@ -1,0 +1,11 @@
+<%= render partial: 'header'%>
+<div class="result-msg-wrapper">
+    <span class="result"><%= @result %></span>
+    <% if @answer.present? %>
+        <span class="after-msg">正解は<%= @answer %>でした。</span>
+    <% else %>
+        <div class="circle"></div>
+        <span class="after-msg">ありがとうございます！</span>
+    <% end %>
+</div>
+<%= render partial: 'footer', locals: {params: "show_answer"}%>

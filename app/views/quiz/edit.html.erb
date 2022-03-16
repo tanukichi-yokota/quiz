@@ -1,0 +1,141 @@
+<%= render partial: 'header'%>
+<div class="edit-profile-wrapper">
+    <%= form_with id: :profile do |f| %>
+        <%= f.label :image do %>
+            <div class="image-wrapper">
+                <%= f.file_field :image %>
+                <% if @friend.image.attached? %>
+                    <%= image_tag @friend.image, class: "attached_image" %>
+                <% else %>
+                    <span class="material-icons-outlined add-a-photo">add_a_photo</span>
+                <% end %>
+                <%# preview用の空のimgタグ %>
+                <img id="preview" class="u-hide">
+            </div>
+        <% end %>
+        <div class="text-wrapper">
+            <p class="group"><%= f.select :group, group_select, { prompt: "選択してください", selected: @friend.group} %></p>
+            <div class="name-wrapper">
+                <div class="name-en">
+                    <p class="last-name-en">
+                        <%= f.text_field :last_name_en, value: @friend.last_name_en, :placeholder => "Sei" %>
+                    </p>
+                    <p class="first-name-en">
+                        <%= f.text_field :first_name_en, value: @friend.first_name_en, :placeholder => "Mei" %>
+                    </p>
+                </div>
+                <div class="name-jp">
+                    <p class="last-name-jp">
+                        <%= f.text_field :last_name, value: @friend.last_name, :placeholder => "姓" %>
+                    </p>
+                    <p class="first-name-jp">
+                        <%= f.text_field :first_name, value: @friend.first_name, :placeholder => "名" %>
+                    </p>
+                </div>
+            </div>
+            <p class="caption">
+                <%= f.text_area :caption, value: @friend.caption, :placeholder => "キャプション" %>
+            </p>
+            <p class="job">
+                <%= f.text_field :job, value: @friend.job, :placeholder => "職業" %>
+            </p>
+        </div>
+        <div class="profile-save-button-wrapper js-target-profile-save-button">
+            <p class="button-text js-target-profile-button-text">SAVE</p> 
+        </div>
+        <%= f.hidden_field :id, value: @friend.id %>
+    <% end %>
+</div>
+
+<div class="edit-content-wrapper">
+    <%= form_with id: :content do |f| %>
+        <p class="intro">
+            <%= f.text_area :intro, value: @content.intro, :placeholder => "問題説明（。で改行されて表示）" %>
+        </p>
+        <p class="question">
+            <%= f.text_field :question, value: @content.question, :placeholder => "問題提示（30文字まで：？で終わる一文で入力すること）" %>
+        </p>
+        <p class="option">
+            A:<%= f.text_field :option_a, value: @content.option_a %>
+            B:<%= f.text_field :option_b, value: @content.option_b %>
+            <br>
+            C:<%= f.text_field :option_c, value: @content.option_c %>
+            D:<%= f.text_field :option_d, value: @content.option_d %>
+        </p>
+        <p class="answer">
+            答え:<%= f.select :answer, answer_select, { prompt: "選択してください", selected: @content.answer} %>
+        </p>
+        <div class="content-save-button-wrapper js-target-content-save-button">
+            <p class="button-text js-target-content-button-text">SAVE</p> 
+        </div>
+        <%= f.hidden_field :friend_id, value: @friend.id %>
+    <% end %>
+</div>
+
+
+<script>
+$(function(){
+    // プロフィールフォーム送信
+    $('.js-target-profile-save-button').on('click', () => {        
+        let form = new FormData(document.getElementById("profile"));
+        $.ajax({
+            type: 'POST', 
+            url: '/quiz/ajax_profile_save', 
+            data: form, 
+            dataType: 'json',
+            // 画像データの送信に必要な設定
+            contentType: false,
+            processData: false
+        })
+        .done(function (res) {
+            console.log("ajax成功");
+            if (res.state == "done") {
+                $('.js-target-profile-button-text').text(`${res.msg}`);
+                setTimeout(function(){$('.js-target-profile-button-text').text("SAVE");}, 2000);
+            } else {
+                alert(`${res.msg}`); 
+            }
+        })
+        .fail(function() {
+            console.log("ajax中断");
+            alert("通信エラーが発生しました"); 
+        })  
+    });
+    // クイズコンテンツフォーム送信
+    $('.js-target-content-save-button').on('click', () => {        
+        let form = new FormData(document.getElementById("content"));
+        $.ajax({
+            type: 'POST', 
+            url: '/quiz/ajax_content_save', 
+            data: form, 
+            dataType: 'json',
+            contentType: false,
+            processData: false
+        })
+        .done(function (res) {
+            console.log("ajax成功");
+            if (res.state == "done") {
+                $('.js-target-content-button-text').text(`${res.msg}`);
+                setTimeout(function(){$('.js-target-content-button-text').text("SAVE");}, 2000);
+            } else {
+                alert(`${res.msg}`); 
+            }
+        })
+        .fail(function() {
+            console.log("ajax中断");
+            alert("通信エラーが発生しました"); 
+        })  
+    });
+    // プロフィール画像プレビュー
+    $('#image').on('change', (e) => {
+        $('.attached_image').addClass('u-hide');
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            $("#preview").attr('src', e.target.result);
+            $("#preview").removeClass('u-hide');
+            $(".add-a-photo").addClass('u-hide');
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
+});
+</script>

@@ -1,0 +1,84 @@
+.footer-wrapper {
+  margin-top: 20px;
+  height: 60px;
+  position: relative;
+  .button-wrapper {
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 310px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    .back-wrapper {
+      span {
+        color: black;
+        text-decoration: none;
+        font-size: 40px;
+        cursor: pointer;
+      }
+    }
+    .forward-wrapper {
+      span {
+        color: black;
+        text-decoration: none;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      .answer-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        padding: 5px 0 0 5px;
+        cursor: pointer;
+        .answer-check {
+          color: red;
+          display: inline-block;
+          vertical-align: top;
+          font-size: 25px;
+          position: absolute;
+          top: 50%;
+          left: 25%;
+          transform: translate(0, -50%);
+        }
+        span{
+          color: red;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+      }
+      .pre-select-answer {
+        font-size: 20px;
+      
+      }
+      .list-link-second {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        padding: 5px 0 0 5px;
+        cursor: pointer;
+        .go-to-list {
+          color: black;
+          display: inline-block;
+          vertical-align: top;
+          font-size: 25px;
+          position: absolute;
+          top: 50%;
+          left: 45%;
+          transform: translate(0, -50%);
+        }
+        span{
+          color: black;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<div class="pre-option-wrapper">
+    <span class="pre-name">現在の問題は</span>
+    <span class="content-name"><%= @friend.full_name %><br></span>
+    <span class="after-name">さん</span>
+</div>
+<div class="pre-option-wrapper">
+    <span class="pre-name">あなた(回答者)は</span>
+    <span class="answerer-name">
+        <select class="name-select js-target-name-select">
+            <%= name_select %>  
+        </select>
+    <span class="material-icons-outlined arrow_drop_down">arrow_drop_down</span>
+    </span>
+    <span class="after-name">さん</span>
+</div>
+<%= form_with do |f| %>
+    <table class="option-wrapper">
+        <tr>
+            <td class="js-target-a not-selected">A: <%= @content.option_a %></td>
+            <td class="js-target-b not-selected">B: <%= @content.option_b %></td>
+        </tr>
+        <tr>
+            <td class="js-target-c not-selected">C: <%= @content.option_c %></td>
+            <td class="js-target-d not-selected">D: <%= @content.option_d %></td>
+        </tr>
+    </table>
+    <div class="post-button js-target-post-button">
+        <span>送信する</span>
+    </div>
+<% end %>
+<script>
+$(function() {
+    // 関数定義
+    let selectAnswer = (element, answer) => {
+        $('td').removeClass('selected');
+        $('td').addClass('not-selected');
+        element.removeClass('not-selected');
+        element.addClass('selected');
+        ans.ans = answer;
+    }
+    let updateContent = (name, content) => {
+        $('.content-name').text(name);
+        $('.js-target-a').text(content.option_a);
+        $('.js-target-b').text(content.option_b);
+        $('.js-target-c').text(content.option_c);
+        $('.js-target-d').text(content.option_d);
+    }
+    // 回答用意
+    let ans = { answerer_id: $('.name-select').val(),
+                content_id: '<%= @content.id %>',
+                ans: ""};
+    // 問題対象者用意
+    let contentName = $('.content-name').text();
+    // 回答者取得
+    $('.js-target-name-select').on('change', () => {ans.answerer_id = $('.name-select').val();}); 
+    // 回答取得
+    $('.js-target-a').click(function(){selectAnswer($(this), "a");});
+    $('.js-target-b').click(function(){selectAnswer($(this), "b");});
+    $('.js-target-c').click(function(){selectAnswer($(this), "c");});
+    $('.js-target-d').click(function(){selectAnswer($(this), "d");});
+    // 回答送信
+    $('.js-target-post-button').on('click', () => {        
+        $.ajax({
+            type: 'POST', 
+            url: '/quiz/ajax_post_answer', 
+            data: ans, 
+            dataType: 'json'
+        })
+        .done(function (res) {
+            console.log("ajax成功");
+            alert("回答を送信しました"); 
+        })
+        .fail(function() {
+            console.log("ajax中断");
+            alert("通信エラーが発生しました"); 
+        })  
+    });
+    // 問題取得
+    setInterval(function(){
+        $.ajax({
+            type: 'GET', 
+            url: '/quiz/ajax_get_content', 
+            dataType: 'json'
+        })
+        .done(function (res) {
+            if (res.friend_name != contentName) {
+                ans.content_id = res.content.id
+                updateContent(res.friend_name, res.content);
+                contentName = res.friend_name;
+                alert("問題を開始します"); 
+            }
+        })
+        .fail(function() {
+            console.log("ajax中断");
+            alert("通信エラーが発生しました"); 
+        })
+    }, 5000); 
+});
+</script>

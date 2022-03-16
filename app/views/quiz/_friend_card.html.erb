@@ -1,0 +1,42 @@
+<% @friends.each do |f| %>
+    <div class="person-wrapper" id=<%= f.full_name %> >
+        <div class="image-wrapper">
+            <% if f.image.attached? %>
+                <%= image_tag f.image %>
+            <% else %>
+                <span class="material-icons-outlined">
+                    account_circle
+                </span>
+            <% end %>
+        </div>
+        <% if params != "quiz" %>
+            <%= link_to quiz_edit_path(id: f.id) do %>
+                <div class="edit-button-wrapper">
+                    <span class="material-icons">edit</span>
+                </div>
+            <% end %>
+        <% end %>
+        <div class="text-wrapper">
+            <p class="group"><%= f.group %></p>
+            <div class="name-wrapper">
+                <div class="name-en">
+                    <p class="last-name-en"><%= f.last_name_en %></p>
+                    <p class="first-name-en"><%= f.first_name_en %></p>
+                </div>
+                <div class="name-jp">
+                    <p class="last-name-jp"><%= f.last_name %></p>
+                    <p class="first-name-jp"><%= f.first_name %></p>
+                </div>
+            </div>
+            <p class="caption"><%= f.caption %></p>
+            <p class="job"><%= f.job %></p>
+            <% if params != 'quiz' %>
+                <%= link_to quiz_quiz_path(id: f.id) do%>
+                    <div class="button-wrapper">
+                        <span class="button-text">GO TO QUIZ</span> 
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
