@@ -10,15 +10,15 @@
                 <% end %>
             </div>
         <% elsif params == 'quiz' %>
-            <div class="forward-wrapper">
+            <div class="quiz-forward-wrapper">
                 <%= link_to quiz_show_answer_path(id: @friends[0].id), class: "answer-link js-target-answer-link u-hide" do %> 
                     <span class="answer-check">Answer Check</span>  
-                    <span class="material-icons-outlined js-target-forward">arrow_forward</span>
+                    <span class="material-icons-outlined  arrorw-forward js-target-forward">arrow_forward</span>
                 <% end %>
                 <span class="pre-select-answer js-target-pre-select-answer">Please Select Answer</span>
             </div>
         <% elsif params == 'show_answer' %>
-            <div class="forward-wrapper">
+            <div class="show-answer-forward-wrapper">
                 <%= link_to quiz_friend_list_path, class: "list-link-second js-target-list-link-socond" do %> 
                     <span class="go-to-list">Go To List</span>  
                     <span class="material-icons-outlined js-target-forward">arrow_forward</span>
