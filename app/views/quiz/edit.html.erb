@@ -90,6 +90,7 @@ $(function(){
         .done(function (res) {
             console.log("ajax成功");
             if (res.state == "done") {
+                $('#friend_id').val(res.friend_id);
                 $('.js-target-profile-button-text').text(`${res.msg}`);
                 setTimeout(function(){$('.js-target-profile-button-text').text("SAVE");}, 2000);
             } else {
@@ -104,6 +105,7 @@ $(function(){
     // クイズコンテンツフォーム送信
     $('.js-target-content-save-button').on('click', () => {        
         let form = new FormData(document.getElementById("content"));
+        console.log(form)
         $.ajax({
             type: 'POST', 
             url: '/quiz/ajax_content_save', 

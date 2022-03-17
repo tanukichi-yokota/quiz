@@ -105,8 +105,10 @@ class QuizController < ApplicationController
       if profile_params[:last_name].strip != "" && profile_params[:first_name].strip != ""
          if friend
             friend.update(profile_params)
+            hash[:friend_id] = params[:id].to_i
          else
             Friend.create(profile_params)
+            hash[:friend_id] = Friend.last(1).first.id
          end
          hash[:msg] = "保存しました！"
          hash[:state] = "done"
@@ -120,18 +122,21 @@ class QuizController < ApplicationController
    def ajax_content_save
       content = Content.find_by(friend_id: params[:friend_id].to_i)
       hash = {}
-      # postされる全てのパラメータが入力されている
-      if content_params.values.compact.length == 8
+      # postされる全てのパラメータが入力されているときのみ保存
+      if content_params.values.reject(&:empty?).length == 8
          if content
-            pp 'update'
             content.update(content_params)
          else
-            pp 'create'
             Content.create(content_params)
          end
          hash[:msg] = "保存しました！"
          hash[:state] = "done"
          render json: hash.to_json
+      elsif content_params[:friend_id].blank?
+         pp "プロフィール未作成"
+         hash[:msg] = "先にプロフィールを作成してください！"
+         hash[:state] = "fail"
+         render json: hash.to_json 
       else
          hash[:msg] = "全ての項目を入力してください！"
          hash[:state] = "fail"
