@@ -51,6 +51,8 @@ $(function() {
                 ans: ""};
     // 問題対象者用意
     let contentName = $('.content-name').text();
+    // 回答者セット
+    $('.name-select').val('<%= current_friend.id %>');
     // 回答者取得
     $('.js-target-name-select').on('change', () => {ans.answerer_id = $('.name-select').val();}); 
     // 回答取得

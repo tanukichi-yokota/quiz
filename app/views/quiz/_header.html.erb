@@ -5,6 +5,11 @@
         </div>
     <% end %>
     <div class="header-button-wrapper">
+        <%= link_to quiz_input_answer_path do %>
+            <div class="input-answer-button-wrapper">
+                <span class="material-icons-outlined">quiz</span>
+            </div>
+        <% end %>
         <%= link_to quiz_friend_list_path do %>
             <div class="edit-button-wrapper">
                 <span class="material-icons-outlined">people</span>

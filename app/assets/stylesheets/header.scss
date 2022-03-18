@@ -30,6 +30,13 @@
     width: 120px;
     display: flex;
     align-items: center;
+    .input-answer-button-wrapper {
+      width: 50px;
+      text-align: center;
+      span {
+        color: black;
+      }
+    }
     .edit-button-wrapper {
       width: 50px;
       text-align: center;
@@ -53,7 +60,7 @@
     .logged-in-name {
       position: absolute;
       top: 50%;
-      left: 10%;
+      right: 30%;
       transform: translate(0, -50%);
     }
     .logout {
