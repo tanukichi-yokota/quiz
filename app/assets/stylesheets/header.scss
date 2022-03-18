@@ -46,22 +46,22 @@
     }
   }
   .login-info-wrapper {
-      height: 100%;
-      width: 200px;
-      min-width: 200px;
-      position: relative;
-      .logged-in-name {
-        position: absolute;
-        top: 50%;
-        left: 10%;
-        transform: translate(0,-50%);
-      }
-      .logout {
-        color: black;
-        position: absolute;
-        top: 50%;
-        right: 12%;
-        transform: translate(0,-50%);
-      }
+    height: 100%;
+    width: 200px;
+    min-width: 200px;
+    position: relative;
+    .logged-in-name {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translate(0, -50%);
+    }
+    .logout {
+      color: black;
+      position: absolute;
+      top: 50%;
+      right: 12%;
+      transform: translate(0, -50%);
+    }
   }
 }
