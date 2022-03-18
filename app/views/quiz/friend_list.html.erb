@@ -59,11 +59,15 @@ $(function(){
             dataType: 'json'
         })
         .done(function (res) {
-            fade();
-            direction.text('STOP');
-            $('.js-target-quiz-name-final').addClass('u-hide')
-            $('.js-target-quiz-name').removeClass('u-hide')
-            switch_name(res);
+            if (res.length) {
+                fade();
+                direction.text('STOP');
+                $('.js-target-quiz-name-final').addClass('u-hide')
+                $('.js-target-quiz-name').removeClass('u-hide')
+                switch_name(res);
+            } else {
+                alert("全てのクイズが終了しました！");
+            }
         })
         .fail(function() {
             alert("通信エラーが発生しました"); 
