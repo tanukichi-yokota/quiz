@@ -1,5 +1,7 @@
 class QuizController < ApplicationController
    protect_from_forgery
+   before_action :logged_in_friend
+   
    def explanation
    end
    def friend_list
