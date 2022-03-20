@@ -1,10 +1,15 @@
 <div class="header-wrapper">
-    <%= link_to root_path do %>
+    <%= link_to root_path, class: "logo-link" do %>
         <div class="logo-wrapper">
             <span>Friend Quiz</span>
         </div>
     <% end %>
     <div class="header-button-wrapper">
+        <%= link_to quiz_input_answer_path do %>
+            <div class="input-answer-button-wrapper">
+                <span class="material-icons-outlined">quiz</span>
+            </div>
+        <% end %>
         <%= link_to quiz_friend_list_path do %>
             <div class="edit-button-wrapper">
                 <span class="material-icons-outlined">people</span>
@@ -14,6 +19,12 @@
             <div class="friend-add-button-wrapper">
                 <span class="material-icons-outlined">person_add</span>
             </div>
+        <% end %>
+    </div>
+    <div class="login-info-wrapper">
+        <span class="logged-in-name"><%= current_friend.full_name %>さん</span>
+        <%= link_to logout_path do %>
+            <span class="material-icons-outlined logout">logout</span>
         <% end %>
     </div>
 </div>

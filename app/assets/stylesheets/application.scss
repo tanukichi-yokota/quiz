@@ -9,6 +9,7 @@
 @import "show_answer";
 @import "input_answer";
 @import "show_ranking";
+@import "sessions";
 
 @keyframes fadein {
   0% {opacity: 0}
@@ -16,7 +17,7 @@
 }
 
 body {
-  margin: 0 12%;
+  margin: 70px 12% 0;
   min-width: 500px;
   background-attachment: fixed;
   background-size: cover;

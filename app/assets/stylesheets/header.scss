@@ -1,9 +1,16 @@
 .header-wrapper {
-  margin-top: 10px;
-  height: 60px;
+  width: 77%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 999;
+  background-color: white;
+  margin-top: 0;
+  height: 70px;
   display: flex;
   justify-content: space-between;
-  a {
+  .logo-link {
     text-decoration: none;
     .logo-wrapper {
       height: 100%;
@@ -23,6 +30,13 @@
     width: 120px;
     display: flex;
     align-items: center;
+    .input-answer-button-wrapper {
+      width: 50px;
+      text-align: center;
+      span {
+        color: black;
+      }
+    }
     .edit-button-wrapper {
       width: 50px;
       text-align: center;
@@ -36,6 +50,25 @@
       span {
         color: black;
       }
+    }
+  }
+  .login-info-wrapper {
+    height: 100%;
+    width: 200px;
+    min-width: 200px;
+    position: relative;
+    .logged-in-name {
+      position: absolute;
+      top: 50%;
+      right: 30%;
+      transform: translate(0, -50%);
+    }
+    .logout {
+      color: black;
+      position: absolute;
+      top: 50%;
+      right: 12%;
+      transform: translate(0, -50%);
     }
   }
 }
