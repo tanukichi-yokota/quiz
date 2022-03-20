@@ -45,14 +45,14 @@ $(function() {
         $('.js-target-c').text(content.option_c);
         $('.js-target-d').text(content.option_d);
     }
+    // 回答者セット
+    $('.name-select').val('<%= current_friend.id %>');
     // 回答用意
     let ans = { answerer_id: $('.name-select').val(),
                 content_id: '<%= @content.id %>',
                 ans: ""};
     // 問題対象者用意
     let contentName = $('.content-name').text();
-    // 回答者セット
-    $('.name-select').val('<%= current_friend.id %>');
     // 回答者取得
     $('.js-target-name-select').on('change', () => {ans.answerer_id = $('.name-select').val();}); 
     // 回答取得
@@ -61,7 +61,7 @@ $(function() {
     $('.js-target-c').click(function(){selectAnswer($(this), "c");});
     $('.js-target-d').click(function(){selectAnswer($(this), "d");});
     // 回答送信
-    $('.js-target-post-button').on('click', () => {        
+    $('.js-target-post-button').on('click', () => {   
         $.ajax({
             type: 'POST', 
             url: '/quiz/ajax_post_answer', 
