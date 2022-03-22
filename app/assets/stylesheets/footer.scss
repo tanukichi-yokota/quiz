@@ -27,9 +27,9 @@
     .quiz-forward-wrapper {
       width: 100%;
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%);
       text-align: center;
       .answer-link {
         display: block;
@@ -56,9 +56,9 @@
     .show-answer-forward-wrapper {
       width: 100%;
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%);
       text-align: center;
       .list-link-second {
         display: block;

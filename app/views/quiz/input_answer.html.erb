@@ -61,21 +61,25 @@ $(function() {
     $('.js-target-c').click(function(){selectAnswer($(this), "c");});
     $('.js-target-d').click(function(){selectAnswer($(this), "d");});
     // 回答送信
-    $('.js-target-post-button').on('click', () => {   
-        $.ajax({
-            type: 'POST', 
+    $('.js-target-post-button').on('click', () => { 
+        if (ans.ans != '') {
+            $.ajax({
+                type: 'POST', 
             url: '/quiz/ajax_post_answer', 
             data: ans, 
             dataType: 'json'
-        })
-        .done(function (res) {
-            console.log("ajax成功");
-            alert("回答を送信しました"); 
-        })
-        .fail(function() {
-            console.log("ajax中断");
-            alert("通信エラーが発生しました"); 
-        })  
+            })
+            .done(function (res) {
+                console.log("ajax成功");
+                alert("回答を送信しました"); 
+            })
+            .fail(function() {
+                console.log("ajax中断");
+                alert("通信エラーが発生しました"); 
+            })  
+        } else {
+            alert('回答を選択してください');
+        }
     });
     // 問題取得
     setInterval(function(){
