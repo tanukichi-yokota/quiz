@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid rgba(128, 128, 128, 0.2);
-  @include media() {
+  @include cp() {
     padding: 0;
   }
   .logo-link {
@@ -23,7 +23,7 @@
       padding: 14px 0;
       vertical-align: top;
       text-align: center;
-      @include media() {
+      @include cp() {
         width: 100px;
         min-width: 0;
       }
@@ -38,18 +38,18 @@
     width: 120px;
     display: flex;
     align-items: center;
-    @include media() {
+    @include cp() {
       width: 90px;
     }
     .input-answer-button-wrapper {
       width: 50px;
       text-align: center;
-      @include media() {
+      @include cp() {
         width: 30px;
       }
       span {
         color: black;
-        @include media() {
+        @include cp() {
           font-size: 15px;
         }
       }
@@ -57,12 +57,12 @@
     .edit-button-wrapper {
       width: 50px;
       text-align: center;
-      @include media() {
+      @include cp() {
         width: 30px;
       }
       span {
         color: black;
-        @include media() {
+        @include cp() {
           font-size: 15px;
         }
       }
@@ -70,12 +70,12 @@
     .friend-add-button-wrapper {
       width: 50px;
       text-align: center;
-      @include media() {
+      @include cp() {
         width: 30px;
       }
       span {
         color: black;
-        @include media() {
+        @include cp() {
           font-size: 15px;
         }
       }
@@ -86,7 +86,7 @@
     width: 200px;
     min-width: 200px;
     position: relative;
-    @include media() {
+    @include cp() {
       width: 100px;
       min-width: 100px;
     }
@@ -95,7 +95,7 @@
       top: 50%;
       right: 30%;
       transform: translate(0, -50%);
-      @include media() {
+      @include cp() {
         font-size: 10px;
       }
     }
@@ -105,7 +105,7 @@
       top: 50%;
       right: 12%;
       transform: translate(0, -50%);
-      @include media() {
+      @include cp() {
         font-size: 15px;
       }
     }
