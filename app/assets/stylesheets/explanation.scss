@@ -1,26 +1,56 @@
 .exp-wrapper {
-    width: 100%;
-    min-width: 780px;
-    height: 500px;
-    margin: 10px 0;
-    padding: 40px;
-    border-radius: 10px;
-    position: relative;
-    background-color: black;
-    .greeting {
-        font-size: 20px;
-        color: white;
-    }
-    .procedure {
-        font-size: 20px;
-        color: white;
-    }
-    .start {
-        font-size: 60px;
-        color: white;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+  width: 100%;
+  min-width: 780px;
+  height: 500px;
+  margin: 10px 0;
+  padding: 40px;
+  border-radius: 10px;
+  position: relative;
+  background-color: black;
+  @include cp() {
+    display: none;
+  }
+  .greeting {
+    font-size: 20px;
+    color: white;
+  }
+  .procedure {
+    font-size: 20px;
+    color: white;
+  }
+  .start {
+    font-size: 60px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.cp-exp-wrapper {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0px 20px;
+  border-radius: 10px;
+  position: relative;
+  @include pc() {
+    display: none;
+  }
+  .greeting {
+    font-size: 20px;
+    color: black;
+  }
+  .procedure {
+    font-size: 20px;
+    color: black;
+  }
+  .start {
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

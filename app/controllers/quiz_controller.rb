@@ -1,5 +1,7 @@
 class QuizController < ApplicationController
    protect_from_forgery
+   before_action :logged_in_friend, except: [:ajax_post_answer, :ajax_profile_save, :ajax_content_save]
+   
    def explanation
    end
    def friend_list
@@ -105,9 +107,12 @@ class QuizController < ApplicationController
       if profile_params[:last_name].strip != "" && profile_params[:first_name].strip != ""
          if friend
             friend.update(profile_params)
+            friend.update(password_digest: ("guest" + friend.id.to_s).crypt("secure_key"))
             hash[:friend_id] = params[:id].to_i
          else
             Friend.create(profile_params)
+            friend = Friend.last(1)[0]
+            friend.update(password_digest: ("guest" + friend.id.to_s).crypt("secure_key"))
             hash[:friend_id] = Friend.last(1).first.id
          end
          hash[:msg] = "保存しました！"
@@ -168,7 +173,7 @@ class QuizController < ApplicationController
    private
    def profile_params
       params[:full_name] = params[:last_name] + params[:first_name]
-      params.permit(:id, :group, :last_name_en, :first_name_en, :full_name, :last_name, :first_name, :caption, :job, :image)
+      params.permit(:id, :group, :last_name_en, :first_name_en, :full_name, :last_name, :first_name, :caption, :job, :password_digest, :image)
    end
    def content_params
       params.permit(:friend_id, :intro, :question, :option_a, :option_b, :option_c, :option_d, :answer)
