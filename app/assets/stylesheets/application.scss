@@ -1,23 +1,4 @@
-$breakpoint: 767px;
-@mixin cp() {
-  @media screen and (max-width: $breakpoint) {
-    @content;
-  }
-}
-@mixin pc() {
-  @media screen and (min-width: $breakpoint) {
-    @content;
-  }
-}
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+@import "a_mixin";
 @import "reset";
 @import "header";
 @import "footer";
@@ -38,7 +19,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   @include cp() {
-    // スマホ用のスタイル（PC用のスタイルを上書き)
     margin: 80px 0 0;
     min-width: 0;
   }
