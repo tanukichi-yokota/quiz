@@ -1,4 +1,3 @@
-@import "mixin";
 @import "reset";
 @import "header";
 @import "footer";
@@ -12,6 +11,12 @@
 @import "show_ranking";
 @import "sessions";
 
+$breakpoint: 767px;
+@mixin cp() {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
 body {
   margin: 80px 12% 0;
   min-width: 500px;
