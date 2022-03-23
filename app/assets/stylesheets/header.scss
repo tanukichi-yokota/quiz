@@ -33,6 +33,7 @@ $breakpoint: 767px;
   border-bottom: 2px solid rgba(128, 128, 128, 0.2);
   @include cp() {
     padding: 0;
+    height: 45px;
   }
   .logo-link {
     text-decoration: none;
@@ -46,11 +47,21 @@ $breakpoint: 767px;
       @include cp() {
         width: 100px;
         min-width: 0;
+        position: relative;
       }
       span {
-        font-size: 12px;
+        font-size: 20px;
         font-weight: bold;
         color: black;
+        @include cp() {
+          display: block;
+          width: 100%;
+          font-size: 12px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
     }
   }

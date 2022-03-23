@@ -19,10 +19,11 @@ $breakpoint: 767px;
 }
 
 .exp-wrapper {
-  width: 100%;
-  min-width: 780px;
-  height: 500px;
-  margin: 10px 0;
+  width: 70%;
+  min-width: 600px;
+  height: auto;
+  min-height: 400px;
+  margin: 10px auto;
   padding: 40px;
   border-radius: 10px;
   position: relative;
@@ -30,47 +31,57 @@ $breakpoint: 767px;
   @include cp() {
     display: none;
   }
-  .greeting {
-    font-size: 20px;
-    color: white;
-  }
-  .procedure {
-    font-size: 20px;
-    color: white;
-  }
-  .start {
-    font-size: 60px;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .text-wrapper {
+    .greeting {
+      font-size: 20px;
+      color: white;
+    }
+    .procedure {
+      font-size: 20px;
+      color: white;
+    }
+    .start {
+      font-size: 40px;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
 .cp-exp-wrapper {
   display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 0px 20px;
+  width: 90%;
+  height: auto;
+  min-height: 100px;
+  margin: 10px auto;
+  padding: 10px 20px;
   border-radius: 10px;
   position: relative;
+  background-color: beige;
   @include pc() {
     display: none;
   }
-  .greeting {
-    font-size: 20px;
-    color: black;
-  }
-  .procedure {
-    font-size: 20px;
-    color: black;
-  }
-  .start {
-    font-size: 30px;
-    color: black;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .text-wrapper {
+    .greeting {
+      font-size: 15px;
+      color: black;
+    }
+    .procedure {
+      font-size: 15px;
+      color: black;
+    }
+    .start {
+      display: block;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      font-size: 22px;
+      color: black;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
