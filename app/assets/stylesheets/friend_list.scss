@@ -23,6 +23,9 @@ $breakpoint: 767px;
   .side-wrapper {
     width: 230px;
     min-width: 230px;
+    @include cp() {
+      display: none;
+    }
     .random-wrapper {
       margin-bottom: 30px;
       padding: 20px;
