@@ -5,9 +5,12 @@
         <span class="start js-target-start u-hide"><%= start_msg %></span>
     </div>
 </div>
+<%# スマホ対応 %>
+<div class="cp-exp-wrapper">
+    <div class="text-wrapper">
+        <span class="greeting js-target-greeting"><%= greeting_msg %></span>
+        <span class="procedure js-target-procedure u-hide"><%= procedure_msg %></span>
+        <span class="start js-target-start u-hide"><%= start_msg %></span>
+    </div>
+</div>
 <%= render partial: 'footer', locals: {params: 'exp'} %>
-
-<script>
-$(function(){
-});
-</script>

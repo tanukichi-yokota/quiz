@@ -11,6 +11,9 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+  @include cp() {
+    padding: 0;
+  }
   .logo-link {
     text-decoration: none;
     .logo-wrapper {
@@ -20,8 +23,12 @@
       padding: 14px 0;
       vertical-align: top;
       text-align: center;
+      @include cp() {
+        width: 100px;
+        min-width: 0;
+      }
       span {
-        font-size: 22px;
+        font-size: 12px;
         font-weight: bold;
         color: black;
       }
@@ -31,25 +38,46 @@
     width: 120px;
     display: flex;
     align-items: center;
+    @include cp() {
+      width: 90px;
+    }
     .input-answer-button-wrapper {
       width: 50px;
       text-align: center;
+      @include cp() {
+        width: 30px;
+      }
       span {
         color: black;
+        @include cp() {
+          font-size: 15px;
+        }
       }
     }
     .edit-button-wrapper {
       width: 50px;
       text-align: center;
+      @include cp() {
+        width: 30px;
+      }
       span {
         color: black;
+        @include cp() {
+          font-size: 15px;
+        }
       }
     }
     .friend-add-button-wrapper {
       width: 50px;
       text-align: center;
+      @include cp() {
+        width: 30px;
+      }
       span {
         color: black;
+        @include cp() {
+          font-size: 15px;
+        }
       }
     }
   }
@@ -58,11 +86,18 @@
     width: 200px;
     min-width: 200px;
     position: relative;
+    @include cp() {
+      width: 100px;
+      min-width: 100px;
+    }
     .logged-in-name {
       position: absolute;
       top: 50%;
       right: 30%;
       transform: translate(0, -50%);
+      @include cp() {
+        font-size: 10px;
+      }
     }
     .logout {
       color: black;
@@ -70,6 +105,9 @@
       top: 50%;
       right: 12%;
       transform: translate(0, -50%);
+      @include cp() {
+        font-size: 15px;
+      }
     }
   }
 }
