@@ -1,3 +1,23 @@
+$breakpoint: 767px;
+@mixin cp() {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin pc() {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .ranking-wrapper {
   width: 100%;
   min-width: 780px;
@@ -7,7 +27,7 @@
     border-collapse: separate;
     border-spacing: 10px;
     td {
-        height: 50px;
+      height: 50px;
     }
     .ranking {
       width: 100px;
