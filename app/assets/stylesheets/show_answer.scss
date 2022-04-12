@@ -26,9 +26,14 @@ $breakpoint: 767px;
   background-color: black;
   position: relative;
   border-radius: 10px;
+  @include cp() {
+    width: 250px;
+    min-width: 250px;
+    height: 250px;
+  }
   .circle {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 10px solid;
     border-color: red;
@@ -49,6 +54,9 @@ $breakpoint: 767px;
     color: white;
     font-size: 70px;
     animation: fadein 5s forwards;
+    @include cp() {
+      font-size: 50px;
+    }
   }
   .after-msg {
     position: absolute;
@@ -58,5 +66,10 @@ $breakpoint: 767px;
     color: white;
     animation: fadein 6s forwards;
     font-size: 20px;
+    @include cp() {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

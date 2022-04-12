@@ -27,10 +27,20 @@ $breakpoint: 767px;
   border-radius: 10px;
   position: relative;
   background-color: black;
+  @include cp() {
+    width: 90%;
+    min-width: 0;
+    margin: 10px auto;
+    padding: 10px;
+    height: 100%;
+  }
   .upper-wrapper {
     width: 100%;
     height: 300px;
     display: flex;
+    @include cp() {
+      height: 180px;
+    }
     .quiz-person-wrapper {
       margin: 0 20px 20px 0;
       padding: 10px 20px;
@@ -38,6 +48,9 @@ $breakpoint: 767px;
       width: 420px;
       height: 280px;
       border-radius: 10px;
+      @include cp() {
+        display: none;
+      }
     }
     .content-wrapper {
       margin-bottom: 20px;
@@ -46,8 +59,11 @@ $breakpoint: 767px;
       width: 100%;
       height: 280px;
       border-radius: 10px;
+      @include cp() {
+        height: 170px;
+      }
       .content {
-        height: 180px;
+        height: 150px;
         margin-bottom: 25px;
         position: relative;
         line-height: 2em;
@@ -62,9 +78,19 @@ $breakpoint: 767px;
           height: 100%;
           font-size: 16px;
           .intro {
+            @include cp() {
+              display: block;
+              font-size: 12px;
+              line-height: 2em;
+            }
           }
           .question {
             color: red;
+            @include cp() {
+              font-size: 12px;
+              line-height: 6px;
+              line-height: 2em;
+            }
           }
         }
       }
@@ -76,6 +102,9 @@ $breakpoint: 767px;
         border-radius: 10px;
         position: relative;
         color: red;
+        @include cp() {
+          display: none;
+        }
         span {
           text-align: center;
           position: absolute;
@@ -91,30 +120,65 @@ $breakpoint: 767px;
   .buttom-wrapper {
     width: 100%;
     height: 200px;
-  }
-  .option-wrapper {
-    display: table;
-    width: 100%;
-    height: 100%;
-    border-collapse: separate;
-    border-spacing: 7px;
-    tr {
-      td {
-        border-radius: 10px;
-        background-color: white;
-        padding: 0px 20px;
-        font-size: 30px;
-        border: 4px solid black;
-        cursor: pointer;
+    @include cp() {
+        height: 252px;
       }
-      .not-selected {
-        &:hover {
-          border: 4px solid orange;
+    .option-wrapper {
+      display: table;
+      width: 100%;
+      height: 100%;
+      border-collapse: separate;
+      border-spacing: 7px;
+      @include cp() {
+        display: none;
+      }
+      tr {
+        td {
+          border-radius: 10px;
+          background-color: white;
+          padding: 0px 20px;
+          font-size: 30px;
+          border: 4px solid black;
+          cursor: pointer;
+        }
+        .not-selected {
+          &:hover {
+            border: 4px solid orange;
+          }
+        }
+        .selected {
+          background-color: orange;
+          color: white;
         }
       }
-      .selected {
-        background-color: orange;
-        color: white;
+    }
+    .cp-option-wrapper {
+      display: table;
+      width: 100%;
+      height: 100%;
+      border-collapse: separate;
+      border-spacing: 3px;
+      @include pc() {
+        display: none;
+      }
+      tr {
+        td {
+          border-radius: 10px;
+          background-color: white;
+          padding: 0px 20px;
+          font-size: 15px;
+          border: 4px solid black;
+          cursor: pointer;
+        }
+        .not-selected {
+          &:hover {
+            border: 4px solid orange;
+          }
+        }
+        .selected {
+          background-color: orange;
+          color: white;
+        }
       }
     }
   }
