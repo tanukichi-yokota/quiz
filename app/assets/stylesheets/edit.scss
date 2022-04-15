@@ -28,6 +28,9 @@ $breakpoint: 767px;
   height: 330px;
   border-radius: 10px;
   position: relative;
+  @include cp() {
+    min-width: 90%;
+  }
   label {
     .image-wrapper {
       position: absolute;
@@ -39,6 +42,12 @@ $breakpoint: 767px;
       border: solid rgba(128, 128, 128, 0.349);
       border-radius: 5px;
       cursor: pointer;
+      @include cp() {
+        width: 90px;
+        height: 130px;
+        top: 20px;
+        left: 20px;
+      }
       input {
         display: none;
       }
@@ -67,6 +76,11 @@ $breakpoint: 767px;
     display: flex;
     flex-direction: column;
     gap: 19px;
+    @include cp() {
+    width: 211px;
+    top: 5px;
+    left: 130px;
+  }
     .group {
       font-size: 10px;
       width: 150px;

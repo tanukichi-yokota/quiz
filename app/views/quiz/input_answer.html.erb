@@ -14,6 +14,7 @@
     <span class="after-name">さん</span>
 </div>
 <%= form_with do |f| %>
+    <%# PC用 %>
     <table class="option-wrapper">
         <tr>
             <td class="js-target-a not-selected">A: <%= @content.option_a %></td>
@@ -21,6 +22,21 @@
         </tr>
         <tr>
             <td class="js-target-c not-selected">C: <%= @content.option_c %></td>
+            <td class="js-target-d not-selected">D: <%= @content.option_d %></td>
+        </tr>
+    </table>
+    <%# スマホ用 %>
+    <table class="cp-option-wrapper">
+        <tr>
+            <td class="js-target-a not-selected">A: <%= @content.option_a %></td>
+        </tr>
+        <tr>
+            <td class="js-target-b not-selected">B: <%= @content.option_b %></td>
+        </tr>
+        <tr>
+            <td class="js-target-c not-selected">C: <%= @content.option_c %></td>
+        </tr>
+        <tr>
             <td class="js-target-d not-selected">D: <%= @content.option_d %></td>
         </tr>
     </table>

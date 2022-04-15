@@ -22,6 +22,7 @@
         </div>
     </div>
     <div class="buttom-wrapper">
+        <%# PC用 %>
         <table class="option-wrapper">
             <tr>
                 <td class="option_a not_selected">A: <%= @content.option_a %></td>
@@ -29,6 +30,21 @@
             </tr>
             <tr>
                 <td class="option_c not_selected">C: <%= @content.option_c %></td>
+                <td class="option_d not_selected">D: <%= @content.option_d %></td>
+            </tr>
+        </table>
+        <%# スマホ用 %>
+        <table class="cp-option-wrapper">
+            <tr>
+                <td class="option_a not_selected">A: <%= @content.option_a %></td>
+            </tr>
+            <tr>
+                <td class="option_b not_selected">B: <%= @content.option_b %></td>
+            </tr>
+            <tr>
+                <td class="option_c not_selected">C: <%= @content.option_c %></td>
+            </tr>
+            <tr>
                 <td class="option_d not_selected">D: <%= @content.option_d %></td>
             </tr>
         </table>
