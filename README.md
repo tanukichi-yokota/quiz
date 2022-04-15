@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+<!-- AWSにSSH接続 -->
+ssh -i yokota_aws_key_0914_0530.pem ec2-user@13.208.70.164
+<!-- nginx起動 -->
+sudo service nginx start
+<!-- pricompile -->
+bundle exec rails assets:precompile RAILS_ENV=production
+<!-- puma起動 -->
+bundle exec rails s -e production
