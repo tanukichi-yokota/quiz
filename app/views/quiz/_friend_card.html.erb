@@ -40,3 +40,9 @@
         </div>
     </div>
 <% end %>
+<script>
+$('.edit-button-wrapper').on('click', () => {
+    let result = window.confirm('管理者専用：クイズを編集しますか？');
+    if (!result) { return false }
+});
+</script>

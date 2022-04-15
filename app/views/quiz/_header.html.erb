@@ -31,5 +31,10 @@
 <script>
 $('.logout').on('click', () => {
     let result = window.confirm('ログアウトしますか？');
+    if (!result) { return false }
+});
+$('.friend-add-button-wrapper').on('click', () => {
+    let result = window.confirm('管理者専用：友達を追加しますか？');
+    if (!result) { return false }
 });
 </script>
